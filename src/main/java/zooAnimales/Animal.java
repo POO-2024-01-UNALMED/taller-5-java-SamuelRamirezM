@@ -1,5 +1,6 @@
 package zooAnimales;
-import java.util.ArrayList;
+
+import gestion.Zona;
 
 public class Animal {
 	private static int totalAnimales;
@@ -7,7 +8,7 @@ public class Animal {
 	private int edad;
 	private String habitat;
 	private String genero;
-	private ArrayList zona;
+	private Zona zona;
 	
 	public Animal() {
 		this(null, 0, null, null);
@@ -46,5 +47,48 @@ public class Animal {
 		return edad;
 	}
 	
+	public void setHabitat(String habitat) {
+		this.habitat = habitat;
+	}
 	
+	public String getHabitat() {
+		return habitat;
+	}
+	
+	public void setGenero(String genero) {
+		this.genero = genero;
+	}
+	
+	public String getGenero() {
+		return genero;
+	}
+	
+	public void setZona(Zona zona) {
+		this.zona = zona;
+	}
+	
+	public Zona getZona() {
+		return zona;
+	}
+	
+	public String movimiento() {
+		return "desplazarse";
+	}
+	
+	public static String totalPorTipo() {
+		return "Mamiferos: " + Mamifero.getlistado().size() + "\n" +
+				"Aves: " + Aves.getlistado().size() + "\n" + 
+				"Reptiles: " + Reptiles.getlistado().size() + "\n" + 
+				"Peces: " + Peces.getlistado().size() + "\n" +
+				"Anfibios: " + Anfibios.getlistado().size();
+	}
+	
+	public String toString() {
+		if (getZona() != null) {
+			return "Mi nombre es "+ getNombre()+", tengo una edad de " +getEdad()+ ", habito en "+getHabitat()+" y mi genero es "+getGenero()+", la zona en la que me ubico es "+getZona().getNombre()+", en el "+getZona().getZoo().getNombre();
+		}
+		else {
+			return "Mi nombre es "+ getNombre()+", tengo una edad de " +getEdad()+ ", habito en "+getHabitat()+" y mi genero es "+getGenero();
+		}
+	}
 }
